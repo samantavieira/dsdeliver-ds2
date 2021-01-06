@@ -31,15 +31,13 @@ public class Order  implements Serializable {
 	private OrderStatus status;
 	
 	@ManyToMany
+	@JoinTable(name = "tb_order_product",
+		joinColumns = @JoinColumn(name = "order_id"), 
+		inverseJoinColumns = @JoinColumn(name = "product_id"))
 	
-	
-	  @JoinTable(
-		       name = "tb_order_product",  
-		       joinColumns = @JoinColumn(name = "order_id"), 
-		       inverseJoinColumns = @JoinColumn(name = "product_id")
-		    )
-	private Set <Product> products = new HashSet<>();
-	
+	private Set<Product> products = new HashSet<>();
+
+
 	
 	public Order() {
 		
